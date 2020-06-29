@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h1>Random Dog</h1>
+  <button>Give me Dog</button>
+  <div id="my-dog">
+
+  </div>
+  <script>
+    // 1. axios로 dog api에 요청 보내기
+    // 2. 응답받은 json 불러오기
+    // 3. json에 작성된 url을 활용해
+    // 4. img 태그를 생성해주고,
+    // 4-1. 생성된 img 태그의 src 값을 해당 url로 설정
+    // 5. my-dog div에 img 태그 append
+
+    // 6. Five Me Dog 버튼을 클릭 할 때,
+    // 6-1. axios 요청 보내기
+    
+    const myButton=document.querySelector('button')
+    const takeImage=function(){
+      axios.get('https://dog.ceo/api/breeds/image/random')
+      .then(response=>{
+        const myDog=document.querySelector('#my-dog')
+        const imgTag=document.createElement('img')
+        imgTag.src=response.data.message
+        myDog.append(imgTag)
+    })
+    }
+
+    myButton.addEventListener('click',takeImage)
+
+  </script>
+</body>
+</html>
